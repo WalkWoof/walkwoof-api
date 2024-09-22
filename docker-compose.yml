@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   woof-api-db:
     container_name: woof-api-db
@@ -9,10 +11,14 @@ services:
       - "3306:3306"
     volumes:
       - woof-api-db-data:/var/lib/mysql
+    networks:
+      - woof-network
 
   woof-api:
     container_name: woof-api
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     depends_on:
@@ -21,6 +27,12 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://woof-api-db:3306/walkwoolf
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: secret
+    networks:
+      - woof-network
 
 volumes:
   woof-api-db-data:
+
+networks:
+  woof-network:
+    driver: bridge
