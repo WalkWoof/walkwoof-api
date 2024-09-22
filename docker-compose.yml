@@ -1,0 +1,26 @@
+services:
+  woof-api-db:
+    container_name: woof-api-db
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: walkwoolf
+      MYSQL_ROOT_PASSWORD: secret
+    ports:
+      - "3306:3306"
+    volumes:
+      - woof-api-db-data:/var/lib/mysql
+
+  woof-api:
+    container_name: woof-api
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - woof-api-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://woof-api-db:3306/walkwoolf
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: secret
+
+volumes:
+  woof-api-db-data:
