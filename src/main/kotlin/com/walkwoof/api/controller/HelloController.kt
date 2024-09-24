@@ -1,4 +1,4 @@
-package com.walkwoof.walkwoof_api
+package com.walkwoof.api.controller
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
