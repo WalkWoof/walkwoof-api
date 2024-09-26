@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   woof-api-db:
     container_name: woof-api-db
@@ -8,7 +6,7 @@ services:
       MYSQL_DATABASE: walkwoof
       MYSQL_ROOT_PASSWORD: secret
     ports:
-      - "3306:3306"
+      - "3366:3306"
     volumes:
       - woof-api-db-data:/var/lib/mysql
     networks:
