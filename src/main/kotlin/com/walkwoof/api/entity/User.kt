@@ -12,6 +12,7 @@ data class User(
 
     @Column(unique = true)
     val email: String = "",
+    @Column(name = "password")
     val userPassword: String = "",
     val role: String = "" // Em breve será criada uma nova data class para a entidade Walker, com seus atributos específicos.
 ): UserDetails {
