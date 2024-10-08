@@ -1,4 +1,4 @@
-package com.walkwoof.walkwoof_api
+package com.walkwoof.api
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
