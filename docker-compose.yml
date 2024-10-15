@@ -1,7 +1,7 @@
 services:
   woof-api-db:
     container_name: woof-api-db
-    image: mysql:8.0
+    image: mysql:8.0.33
     environment:
       MYSQL_DATABASE: walkwoof
       MYSQL_ROOT_PASSWORD: secret
