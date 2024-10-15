@@ -1,4 +1,3 @@
--- V2__Create_activities_log_table.sql
 CREATE TABLE activities_log
 (
     id          INT AUTO_INCREMENT PRIMARY KEY,
