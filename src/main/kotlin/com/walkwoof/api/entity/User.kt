@@ -10,11 +10,14 @@ data class User(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
 
+    @Column(name = "username")
+    val name: String = "",
     @Column(unique = true)
     val email: String = "",
     @Column(name = "password")
     val userPassword: String = "",
-    val role: String = "" // Em breve será criada uma nova data class para a entidade Walker, com seus atributos específicos.
+    @Column
+    val role: String = ""
 ): UserDetails {
 
     override fun getAuthorities(): Collection<GrantedAuthority> {
