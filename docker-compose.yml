@@ -1,19 +1,19 @@
 services:
   woof-api-db:
     container_name: woof-api-db
-    image: mysql:8.0
+    image: mysql:8.0.33
     environment:
       MYSQL_DATABASE: walkwoof
       MYSQL_ROOT_PASSWORD: secret
     ports:
       - "3366:3306"
     volumes:
-      - woof-api-db-data:/var/lib/mysql
+      - woof-db-data:/var/lib/mysql
     networks:
       - woof-network
 
 volumes:
-  woof-api-db-data:
+  woof-db-data:
 
 networks:
   woof-network:
