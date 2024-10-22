@@ -17,7 +17,9 @@ data class User(
     @Column(name = "password")
     val userPassword: String = "",
     @Column
-    val role: String = ""
+    val role: String = "",
+    @Column(name = "profile_picture_url")
+    val profilePic: String = ""
 ): UserDetails {
 
     override fun getAuthorities(): Collection<GrantedAuthority> {
