@@ -1,7 +1,6 @@
 package com.walkwoof.api.controller
 
 import com.walkwoof.api.dto.NotificationDto
-import com.walkwoof.api.entity.Notification
 import com.walkwoof.api.service.NotificationService
 import com.walkwoof.api.service.UserService
 import org.springframework.http.ResponseEntity
