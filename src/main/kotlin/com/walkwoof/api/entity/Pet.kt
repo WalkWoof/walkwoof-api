@@ -24,7 +24,7 @@ data class Pet(
     @Column(name = "updated_at")
     var updatedAt: Timestamp? = null,
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
     val owner: User? = null
 )

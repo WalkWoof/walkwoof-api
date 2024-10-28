@@ -23,7 +23,7 @@ class UserProfileController(val userService: UserService) {
             id = user?.id.toString(),
             name = user?.name,
             email = user?.email,
-            role = user?.role,
+            role = user?.role.toString(),
             profilePic = user?.profilePic
         )
 

@@ -30,7 +30,7 @@ data class Activity(
     @JoinColumn(name = "walker_id", nullable = false)
     val walker: Walker? = null,
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "pet_id", nullable = false)
     val pet: Pet? = null
 )
