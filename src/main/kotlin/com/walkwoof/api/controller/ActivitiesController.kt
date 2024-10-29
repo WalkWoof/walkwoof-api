@@ -3,6 +3,7 @@ package com.walkwoof.api.controller
 import com.walkwoof.api.dto.ActivityDto
 import com.walkwoof.api.service.ActivityService
 import com.walkwoof.api.service.UserService
+import com.walkwoof.api.service.WalkerService
 import com.walkwoof.api.util.ActivityStatus
 import com.walkwoof.api.util.UserRole
 import org.springframework.http.ResponseEntity
@@ -16,7 +17,8 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/activities")
 class ActivitiesController(
     val activityService: ActivityService,
-    val userService: UserService
+    val userService: UserService,
+    val walkerService: WalkerService
 ) {
 
     @GetMapping("/active")
@@ -25,7 +27,8 @@ class ActivitiesController(
         val user = userService.findByEmail(userDetails.username)
 
         val activities =  if (user!!.role == UserRole.WALKER) {
-            activityService.getWalkerActivities(user.id).filter { it.status == ActivityStatus.IN_PROGRESS }
+            val walker = walkerService.getByUserId(user.id)
+            activityService.getWalkerActivities(walker.id).filter { it.status == ActivityStatus.IN_PROGRESS }
         } else {
             activityService.getUserActivities(user.id).filter { it.status == ActivityStatus.IN_PROGRESS }
         }
@@ -52,7 +55,8 @@ class ActivitiesController(
         val user = userService.findByEmail(userDetails.username)
 
         val activities =  if (user!!.role == UserRole.WALKER) {
-            activityService.getWalkerActivities(user.id)
+            val walker = walkerService.getByUserId(user.id)
+            activityService.getWalkerActivities(walker.id)
         } else {
             activityService.getUserActivities(user.id)
         }
