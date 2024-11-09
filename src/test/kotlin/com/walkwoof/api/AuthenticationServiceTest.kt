@@ -5,6 +5,7 @@ import com.walkwoof.api.entity.User
 import com.walkwoof.api.repository.UserRepository
 import com.walkwoof.api.service.AuthenticationService
 import com.walkwoof.api.service.JwtService
+import com.walkwoof.api.util.UserRole
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.*
@@ -23,7 +24,7 @@ class AuthenticationServiceTest {
         val user = User(
             email = "test@exemplo.com",
             userPassword = passwordEncoder.encode("teste de senha"),
-            role = "User"
+            role = UserRole.OWNER
         )
         `when`(userRepository.findByEmail("test@exemplo.com")).thenReturn(user)
         `when`(jwtService.generateToken(user)).thenReturn("fake-jwt-token")
@@ -44,7 +45,7 @@ class AuthenticationServiceTest {
         val user = User(
             email = "test@exemplo.com",
             userPassword = passwordEncoder.encode("teste de senha"),
-            role = "User"
+            role = UserRole.OWNER
         )
         `when`(userRepository.findByEmail("test@exemplo.com")).thenReturn(user)
 
@@ -83,7 +84,7 @@ class AuthenticationServiceTest {
         val user = User(
             email = "test@exemplo.com",
             userPassword = bCryptPasswordEncoder.encode("teste de senha"),
-            role = "User"
+            role = UserRole.OWNER
         )
 
         val authenticationService = AuthenticationService(userRepository, bCryptPasswordEncoder, jwtService)

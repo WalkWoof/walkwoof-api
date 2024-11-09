@@ -5,5 +5,6 @@ data class UserProfileDto(
     val name: String?,
     val email: String?,
     val role: String?,
-    val profilePic: String?
+    val profilePic: String?,
+    val availability: Map<String, String>? = null
 )
