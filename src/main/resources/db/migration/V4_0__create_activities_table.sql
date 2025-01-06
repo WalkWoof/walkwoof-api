@@ -5,7 +5,7 @@ CREATE TABLE activities
     walker_id  INT       NOT NULL,
     start_time TIMESTAMP NOT NULL,
     end_time   TIMESTAMP,
-    status     ENUM('scheduled', 'in_progress', 'completed') DEFAULT 'scheduled',
+    status     ENUM('SCHEDULED', 'IN_PROGRESS', 'COMPLETED') DEFAULT 'SCHEDULED',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (pet_id) REFERENCES pets (id) ON DELETE CASCADE,
